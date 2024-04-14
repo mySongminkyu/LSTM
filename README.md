@@ -1,4 +1,4 @@
-# LSTM
+<img width="586" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/0490cc1a-508d-4bff-9223-5bd0aac43f33"><img width="625" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/32a68f1e-af01-4e4d-b7d3-0d0081b744a0"># LSTM
 
 -LONG SHORT-TERM MEMORY(LSTM)
 
@@ -32,6 +32,37 @@
       또한 이 cell state에 gate를 이용하여 뭔가를 더하거나 없애는 것도 가능하다.
       gate는 정보가 전달될 수 있는 추가적인 method로, sigmoid layer와 pointwise 곱으로 이루어져 있다.
 
-      <img width="241" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/aff3b1db-6ef2-484d-9b72-c096389500e1">
+      - Forget Gate
+
+      <img width="597" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/79937c75-0931-49d2-9aeb-229ca84de7ef">
       
+      전의 cell에서 넘어온 정보들을 sigmoid function을 이용하여 불필요하다 여겨지는 data들에 낮은 가중치를 부여한다.(Sigmoid function을 통해 얻어진 0~1 사이의 weight를 곱해주며 학습을 해서 상대적으로 중요한 정보에는
+      높은 가중치를, gradient update에 안 좋은 영향을 주는 정보에는 낮은 가중치를 부여한다.)
+
+      즉 network를 학습하여 얻은 $W_f$와 $B_f$를 이용하여 0에 가까운 값이 나오면 반영을 적게하고 아예 0이 되면 삭제, 반대로 1에 가까운 값일 수록 반영을 많이하며 1이 나오면 정보손실 없이 그대로 전달하는 역할을 함으로써
+      cell을 지나면서도 계속 유의미한 data들이 cell state flow에 보존되도록 한다.
+
+      - Input Gate
+      
+      <img width="625" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/09fb2f90-1386-4310-8fa3-eaf67eacb0d6">
+
+      입력값 $x_t$와 이전 hidden state를 사용하여 현재 cell의 local cell state를 얻어내고 이를 global cell state에 얼마나 반영할지 결정하는 gate.
+
+      forget gate와 비슷하게 sigmoid 함수로 현재 시점에서 얻은 정보의 값을 계산하여 weight를 설정하는 기능을 한다.
+
+      - Cell state update
+      
+      <img width="541" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/6aa32c98-08de-4ba9-9de2-2b896d9d9a83">
+
+      이후, 전시점 hidden state가 forget gate를 지난 cell state와 현재 cell에서 Input gate를 지나 얻은 cell state를 더해서 최종 global cell state를 update 한다.
+
+      - Output gate
+
+      <img width="586" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/841ad6bf-c91b-4780-83f0-48be29561bf1">
+
+      최종 global cell state 값에서 어느정도를 hidden state로 전달할 것인지 정하는 마지막 gate이다.
+      여기서 최종적으로 얻은 $h_t$를 기반으로 다음 cell에서는 $C$ _t+1 을 구하게 된다.
+
+
+        
       
