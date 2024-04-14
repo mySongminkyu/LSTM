@@ -1,4 +1,4 @@
-<img width="586" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/0490cc1a-508d-4bff-9223-5bd0aac43f33"><img width="625" alt="image" src="https://github.com/mySongminkyu/LSTM/assets/132251519/32a68f1e-af01-4e4d-b7d3-0d0081b744a0"># LSTM
+# LSTM
 
 -LONG SHORT-TERM MEMORY(LSTM)
 
